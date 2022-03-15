@@ -1,9 +1,10 @@
+# mdbHackathonTeam1
 
 # Details
 
-**Project** : _insert project title here_  
-**Team Number** : _insert team number here_  
-**Team Name** : _insert team name here_  
+**Project** : Bodega Buddy 
+**Team Number** : 1  
+**Team Name** : Menu Maniacs  
 **Demonstration Video** : _Insert link to demonstration video_  
 
 # Overview
