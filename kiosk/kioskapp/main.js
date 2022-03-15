@@ -3,6 +3,7 @@ const users = require("./users");
 const output = require("./output");
 const projects = require("./projects");
 const shoppingCart = require("./shoppingCart");
+const watch = require("./watch");
 
 /*
 const Choices = {
@@ -15,10 +16,12 @@ const Choices = {
 const Choices = {
   Checkout: "Review Shopping Cart/Checkout",
   SelectItem: "Select An Item",
+	WatchCatalogChanges: "Turn On Catalog Change Noficiations",
   LogOut: "Log out / Quit",
 };
 
 async function mainMenu() {
+	
   try {
     const answers = await inquirer.prompt({
       type: "rawlist",
@@ -33,9 +36,13 @@ async function mainMenu() {
         return mainMenu();
       }
       case Choices.SelectItem: {
-        return shoppingCart.selectCategory();
+        await shoppingCart.selectCategory();
 				return mainMenu();
       }
+		case Choices.WatchCatalogChanges : {
+			await watch.watchForChanges();
+			return mainMenu();
+		}
       case Choices.LogOut: {
         const loggedOut = await users.logOut();
         if (!loggedOut) {
