@@ -1,5 +1,20 @@
 [
     {
+        "name": "removeTeamMember",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "resetFunc",
+        "private": false,
+        "can_evaluate": {}
+    },
+    {
+        "name": "addTeamMember",
+        "private": false,
+        "run_as_system": true
+    },
+    {
         "name": "canReadPartition",
         "private": false,
         "run_as_system": true
@@ -16,21 +31,6 @@
     },
     {
         "name": "getMyTeamMembers",
-        "private": false,
-        "run_as_system": true
-    },
-    {
-        "name": "removeTeamMember",
-        "private": false,
-        "run_as_system": true
-    },
-    {
-        "name": "resetFunc",
-        "private": false,
-        "can_evaluate": {}
-    },
-    {
-        "name": "addTeamMember",
         "private": false,
         "run_as_system": true
     }

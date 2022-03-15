@@ -1,6 +1,6 @@
 {
-    "config_version": 20210101,
     "app_id": "realmcli-zdbuk",
+    "config_version": 20210101,
     "name": "realmcli",
     "location": "US-VA",
     "deployment_model": "GLOBAL"

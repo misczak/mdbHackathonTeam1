@@ -1,0 +1,34 @@
+{
+    "bsonType": "object",
+    "properties": {
+        "_id": {
+            "bsonType": "objectId"
+        },
+        "_partition": {
+            "bsonType": "string"
+        },
+        "complete": {
+            "bsonType": "bool"
+        },
+        "items": {
+            "bsonType": "array",
+            "items": {
+                "bsonType": "objectId"
+            }
+        },
+        "total": {
+            "bsonType": "decimal"
+        },
+        "user": {
+            "bsonType": "string"
+        }
+    },
+    "required": [
+        "_id",
+        "_partition",
+        "user",
+        "complete",
+        "total"
+    ],
+    "title": "Cart"
+}

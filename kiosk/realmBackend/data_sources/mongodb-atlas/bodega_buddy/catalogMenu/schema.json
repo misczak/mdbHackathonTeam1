@@ -1,0 +1,47 @@
+{
+    "properties": {
+        "_id": {
+            "bsonType": "objectId"
+        },
+        "_partition": {
+            "bsonType": "string"
+        },
+        "category": {
+            "bsonType": "string"
+        },
+        "description": {
+            "bsonType": "string"
+        },
+        "ingredients": {
+            "bsonType": "array",
+            "items": {
+                "bsonType": "string"
+            }
+        },
+        "menuItemName": {
+            "bsonType": "string"
+        },
+        "menuItemPrice": {
+            "bsonType": "decimal"
+        },
+        "productID": {
+            "bsonType": "long"
+        },
+        "status": {
+            "bsonType": "string"
+        },
+        "uri": {
+            "bsonType": "string"
+        }
+    },
+    "required": [
+        "_id",
+        "_partition",
+        "category",
+        "menuItemName",
+        "menuItemPrice",
+        "status",
+        "productID"
+    ],
+    "title": "catalogMenu"
+}
