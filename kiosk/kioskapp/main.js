@@ -2,10 +2,19 @@ const inquirer = require("inquirer");
 const users = require("./users");
 const output = require("./output");
 const projects = require("./projects");
+const shoppingCart = require("./shoppingCart");
 
+/*
 const Choices = {
   ShowProjects: "Show all of my projects",
   SelectProject: "Select a project",
+  LogOut: "Log out / Quit",
+};
+*/
+
+const Choices = {
+  Checkout: "Review Shopping Cart/Checkout",
+  SelectItem: "Select An Item",
   LogOut: "Log out / Quit",
 };
 
@@ -19,19 +28,20 @@ async function mainMenu() {
     });
 
     switch (answers.mainMenu) {
-      case Choices.ShowProjects: {
-        await projects.showProjects();
+      case Choices.Checkout: {
+        await shoppingCart.checkOut();
         return mainMenu();
       }
-      case Choices.SelectProject: {
-        return projects.selectProject();
+      case Choices.SelectItem: {
+        return shoppingCart.selectCategory();
+				return mainMenu();
       }
       case Choices.LogOut: {
         const loggedOut = await users.logOut();
         if (!loggedOut) {
           output.error("Error logging out");
         } else output.result("You have been logged out. Use Ctrl-C to quit.");
-        return;
+				return;
       }
       default: {
         return mainMenu();

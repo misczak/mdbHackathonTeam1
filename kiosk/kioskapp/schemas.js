@@ -34,6 +34,38 @@ const ProjectSchema = {
 
 };
 
+const CartSchema = {
+	name : "Cart",
+	properties : {
+		_id: "objectId",
+		user: "string",
+		complete: "bool",
+		total: "decimal128",
+		items: {
+			type: "list",
+			objectType: "catalogMenu"
+		},
+	},
+	primaryKey: "_id",
+}
+
+const MenuItemSchema = {
+	name: "catalogMenu",
+	properties : {
+		_id: "objectId",
+		productID: "int",
+		menuItemName: "string",
+		menuItemPrice: "decimal128",
+		category: "string",
+		ingredients: "string[]",
+		status: "string",
+	},
+	primaryKey: "_id",
+	
+};
+
 exports.ProjectSchema = ProjectSchema;
 exports.TaskSchema = TaskSchema;
 exports.UserSchema = UserSchema;
+exports.MenuItemSchema = MenuItemSchema;
+exports.CartSchema = CartSchema;

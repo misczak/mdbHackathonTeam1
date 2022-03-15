@@ -5,10 +5,11 @@ const schemas = require("./schemas");
 const output = require("./output");
 
 const realms = {};
+const globalPartitionKey = "partition=all";
 
 async function openRealm(partitionKey) {
   const config = {
-    schema: [schemas.TaskSchema, schemas.UserSchema, schemas.ProjectSchema],
+    schema: [schemas.TaskSchema, schemas.UserSchema, schemas.ProjectSchema, schemas.MenuItemSchema, schemas.CartSchema],
     sync: {
       user: users.getAuthedUser(),
       partitionValue: partitionKey,
@@ -22,7 +23,7 @@ output.intro();
 async function run() {
   output.header("*** WELCOME ***");
   output.header(
-    "Please log in to your Realm account or register as a new user."
+    "Please log in to your Bodega account or register as a new user."
   );
 
   let choice = await inquirer.prompt([
@@ -62,3 +63,4 @@ async function closeRealm(partitionKey) {
 exports.getRealm = getRealm;
 exports.closeRealm = closeRealm;
 exports.run = run;
+exports.globalPartitionKey = globalPartitionKey;
