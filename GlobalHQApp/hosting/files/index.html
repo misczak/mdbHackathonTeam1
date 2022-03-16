@@ -121,7 +121,7 @@
           <h2 id="ga-${doc.productID}" class="${doc.status}"">Global Availability</h2>
           <input type="button" class="availabilityButton" value="Mark Unavailable" data-arg1="${doc.productID}" data-arg2="outofstock" />
           <input type="button" class="availabilityButton" value="Mark Available" data-arg1="${doc.productID}" data-arg2="instock" />
-          <h2 id="la-${doc.productID}" class="${doc.status}">Local Availability</h2>
+          <h2 id="la-${doc.productID}">Local Availability</h2>
           <input type="text" class="zipCode" id="zip-${doc.productID}" placeholder="Enter ZIP Code" data-arg1="${doc.productID}" /><input type="button" class="zipcodeButton" type="submit" data-arg1="${doc.productID}" onclick="getLocalStores()" value="Find Local Stores" />
           <select name="storeDropdown" class="storeDropdown" id="dd-${doc.productID}" placeholder="Choose a store"></select>
           <div class="localButtonArea">
