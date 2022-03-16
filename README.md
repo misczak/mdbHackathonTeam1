@@ -168,6 +168,39 @@ Install the lastest versions of:
 
 # DEMONSTRATION INSTRUCTIONS
 
+The 3-minute demonstrate script consists of the following steps:
+
+1. Give a quick tour of kiosk application to show how you can browse
+   product categories, add items to the shopping cart, review the
+   shopping items, etc. While you are navigating the app you should
+   visit the "Danish" category and point out that "Strawberry
+   Cheesecake" is currently available, but rumored to be in short
+   supply due to a cream cheese shortage.  
+2. Switch to the corporate app in a browser and search for
+   "cheese". Point out the autocompletion and the highlighting in the
+   product names. Tile the kiosk window and the browser window so that
+   the kiosk window is visible. Make "Strawberry Cheesecake" globally
+   unavailalbe. You should see a notification in the Kiosk app stating
+   that the cheesecake is no longer available. If you mark it
+   available, you will see a second notification in the kiosk. This
+   shows the real-time sync capabilties of realm sync.
+3. In the corporate app, enter 10019 in the zip code box for
+   "Strawberry Cheesecake". This feature uses Atlas Search Geosearch
+   to find the stores close to the zip code 10019. To the right of the
+   zip code box, select 
+   store 4927. Mark cheese case as being unavailable in store 4927. (It
+   should be marked as globally available.)
+4. Go back to the realm kiosk and try to purchase "Strawberry
+   Cheesecake" under the "Pastries" category. It will not be
+   listed. (If you go back to the corporate app and mark it available
+   in store 4927, then it will show up in the Kiosk.)
+5. The app was built using Realm App services. If you go to the realm
+   tab in Atlas you will see to Realm applications: one for the
+   corporate app and one for the kiosk. If you navigate to the
+   corporate realm app and go to functions, you can review the search
+   aggregation pipelines used to implement the corporate app.
+   
+
 ## Kiosk Application Overview
 
 When you start the kiosk application it will ask you to login. If this
