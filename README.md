@@ -80,7 +80,64 @@ and also get notified in real-time as items go in or out of stock. If an item is
 
 ### GlobalHQ App
 
-#### 1. Install `mongodb-realm-cli`
+#### 1. Setup Atlas Cluster
+
+Create an M10 Atlas cluster in us-east-1 (Virginia) and import the data. Create a database called `bodega_buddy`. Import the individual `.json` files from this 
+repository into Atlas and create the following search indexes: 
+
+##### Search Index 'menu_item'
+Collection: catalogMenu
+```json
+{
+  "mappings": {
+    "dynamic": false,
+    "fields": {
+      "description": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "autocomplete"
+        }
+      ],
+      "menuItemName": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "autocomplete"
+        }
+      ]
+    }
+  }
+}
+```
+
+##### Search Index 'store_location'
+Collection: storeCatalog
+```json
+{
+  "mappings": {
+    "dynamic": false,
+    "fields": {
+      "location": [
+        {
+          "dynamic": true,
+          "type": "document"
+        },
+        {
+          "indexShapes": true,
+          "type": "geo"
+        }
+      ]
+    }
+  }
+}
+```
+
+
+
+#### 2. Install `mongodb-realm-cli`
 
 You can import the ready-made MongoDB Realm backend using the
 `mongodb-realm-cli`, which you can install with npm:
@@ -89,13 +146,13 @@ You can import the ready-made MongoDB Realm backend using the
 npm install -g mongodb-realm-cli
 ```
 
-#### 2. Sign up for a Mapbox API Key
+#### 3. Sign up for a Mapbox API Key
 
 This app uses Mapbox's places API to geocode a zipcode into a set of coordinates. Mapbox allows
  for 100,000 free requests, which should be enough for a demo. Sign up for an account and write down 
  the API Key you generate. 
 
-#### 3. Clone this repository and insert Mapbox API Key
+#### 4. Clone this repository and insert Mapbox API Key
 
 You will need to clone this repository to setup a local copy that can be used to import into Realm.
 This can be done with the command:
@@ -107,7 +164,7 @@ git clone https://github.com/misczak/mdbHackathonTeam1
 Once it is cloned, navigate to the GlobalHQApp/hosting/files and modify `index.html`. On line 234, 
 replace `<INSERT MAPBOX ACCESS TOKEN HERE>` with the value of your Mapbox API key obtained in Step 2.
 
-#### 4. Create an API Key and authenticate the CLI
+#### 5. Create an API Key and authenticate the CLI
 
 To authenticate with the `realm-cli`, you must create an API key with **Project
 Owner** permissions for your project in the **Project Access Manager** view.
@@ -122,7 +179,7 @@ Once created, pass the API keys to `realm-cli login` to log in:
 realm-cli login --api-key=[public API key] --private-api-key=[private API key]
 ```
 
-#### 5. Import the Realm backend app
+#### 6. Import the Realm backend app
 
 If logged in successfully, you can now import the app. Start in the root directory of the local copy 
 of the repository and run:
