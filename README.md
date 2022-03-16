@@ -25,7 +25,14 @@ _Describe what you application does and how it works_
 
 # Roles and Responsibilities
 
-_List all the team members and summarize the contributions each member made to this project_
+Andrew Chaffin - 
+Jay Runkel - 
+John Misczak -
+Kamron Abtahi - 
+Rory Pruvot -
+Samadnya Kalaskar - 
+
+
 
 # Demonstration Script
 
