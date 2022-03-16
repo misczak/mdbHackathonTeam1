@@ -32,6 +32,39 @@ _Describe what you application does and how it works_
 
 ![hackathonArchitecture](https://user-images.githubusercontent.com/45085638/158649880-9e1781a8-2b0f-4375-9c9a-07f83d0bb4d8.png)
 
+## Products Used
+
+This project uses the following MongoDB products and features:
+
+* Atlas Search (Fuzzy Search, Autocomplete, Highlighting, GeoWithin)
+* Realm Sync
+* Realm App Services (Functions, Static Hosting)
+
+## How It Works
+
+There are three major components to this application: the Atlas cluster, the GlobalHQ web application, and the Kiosk app. 
+
+The main Atlas cluster has two collections: catalogMenu and storeCatalog. 
+
+The catalogMenu collection holds each unique menu item that can be ordered in a store, including its product ID, its category, 
+its price, its ingredients, a brief description, and its current status - whether it is "in stock" or "out of stock" 
+for the entire company.
+
+The storeCatalog collection has a document for each individual store in the chain, with GeoJSON coordinates to represent 
+its real world location. It also has an array of menu items that can be ordered in each store. A menu item's availability can be
+changed unique to only a single store, in addition to the global availability. 
+
+The GlobalHQ web application is the frontend for the admin functionality that the chain's headquarters will have access to. They can look 
+up a menu item using Atlas Search and mark the item as unavailable across the board - in the case of a seasonal menu change or a particular
+item being discontinued. The web applicaton also allows an admin user to look for stores close to a specified zip code and mark an item as either available
+or unavailable for that particular store, in the event that a delivery is delayed or they are experiencing a shortage of ingredients. The web 
+application is comprised of two static files hosted on Realm that make use of the Realm Web SDK and Realm functions to interact with the database. There is no usage
+of an application server or MongoDB driver. 
+
+The Kiosk app is built using the Realm NodeJS SDK and Realm Sync. This app represents the Kiosk interface that an in-store customer would see. They can add items to an order
+and also get notified in real-time as items go in or out of stock. If an item is out of stock for the store that the customer is using the kiosk from, it will no longer appear
+ in the menu for a customer to select, which will prevent confusion and customer service associates from having to cancel out orders after the fact. Every time the menu is navigated, the kiosk is only querying the local Realm database, instead of making a web request to Atlas.  
+
 # Roles and Responsibilities
 
 * Andrew Chaffin - Collection schema development
