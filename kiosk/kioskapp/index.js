@@ -9,7 +9,8 @@ const globalPartitionKey = "partition=all";
 
 async function openRealm(partitionKey) {
   const config = {
-    schema: [schemas.TaskSchema, schemas.UserSchema, schemas.ProjectSchema, schemas.MenuItemSchema, schemas.CartSchema],
+		// schemas.TaskSchema, schemas.UserSchema, schemas.ProjectSchema,
+    schema: [schemas.MenuItemSchema, schemas.CartSchema, schemas.StoreSchema, schemas.ProductStoreAvailabilitySchema],
     sync: {
       user: users.getAuthedUser(),
       partitionValue: partitionKey,

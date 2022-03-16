@@ -2,6 +2,7 @@ const inquirer = require("inquirer");
 const chalk = require("chalk");
 const output = require("./output");
 const index = require("./index");
+const storeAvail = require("./storeAvailability");
 
 function listener(tasks, changes) {
   changes.deletions.forEach((index) => {
@@ -24,10 +25,28 @@ function listener(tasks, changes) {
   });
 }
 
+function psaListener(psa, changes) {
+	changes.modifications.forEach((index) => {
+		var ui = new inquirer.ui.BottomBar();
+    let modifiedPSA = psa[index];
+    //output.watchResult("Catalog Item Modified", JSON.stringify(modifiedTask, null, 2));
+		ui.updateBottomBar(
+			chalk.white.bold(modifiedPSA.menuItemName + " CHANGED. Status is now " + modifiedPSA.status));
+  });
+
+}
+
 async function watchForChanges() {
   const realm = await index.getRealm(index.globalPartitionKey);
   const tasks = realm.objects("catalogMenu");
   tasks.addListener(listener);
 }
 
+async function watchForStoreAvailChanges() {
+  const realm = await index.getRealm();
+  const psa = realm.objects("ProductStoreAvailability");
+  psa.addListener(psaListener);
+}
+
 module.exports.watchForChanges = watchForChanges;
+module.exports.watchForStoreAvailChanges = watchForStoreAvailChanges;

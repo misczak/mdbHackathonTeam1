@@ -43,6 +43,7 @@ exports.getBasket = async () => {
 		cart = basket;
 	}
 	else {
+		try {
 //		output.result("Querying realm for basket");
 		const userId = users.getAuthedUserId();
 //		const realm = await index.getRealm("user=" + userId);
@@ -50,7 +51,10 @@ exports.getBasket = async () => {
 	
 		const carts = realm.objects("Cart").filtered("complete == false AND user == '" + userId + "'");
 //		output.result(JSON.stringify(carts, null, 2));
-		cart = carts[0] ? carts[0] : await createBasket();
+			cart = carts[0] ? carts[0] : await createBasket();
+		} catch (err) {
+			output.error(err.message);
+		}
 	}
 
 	return cart;
