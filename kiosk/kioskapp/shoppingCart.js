@@ -8,6 +8,7 @@ const main = require("./main");
 const tasks = require("./tasks");
 const manageTeam = require("./manageTeam");
 const cart = require("./cart");
+const storeAvail = require("./storeAvailability");
 
 let categories;
 const goBackMenuItemName = "<-Go Back->";
@@ -45,7 +46,16 @@ getItems = async (category) => {
 		const filter = "category == '" + category + "' AND status == 'instock'";
 		const items = realm.objects("catalogMenu").filtered(filter);
 
-		return items;
+		const itemArray = Array.from(items);
+		const sAvail = Array.from(await storeAvail.getStoreItemAvail());
+		const availItems = itemArray.filter((item) => {
+			const avail = sAvail.find((psa) => {
+				return psa.productID == item.productID && psa.status == "instock"
+			});
+			return avail != undefined ? true : false;
+		});
+		
+		return availItems;
 	} catch (err) {
 		output.error(err.message);
 	}

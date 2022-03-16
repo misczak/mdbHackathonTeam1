@@ -64,8 +64,34 @@ const MenuItemSchema = {
 	
 };
 
-exports.ProjectSchema = ProjectSchema;
-exports.TaskSchema = TaskSchema;
-exports.UserSchema = UserSchema;
+const StoreSchema = {
+	name: "storeCatalog",
+	properties : {
+		_id: "objectId",
+		storeID: "int",
+		items: {
+			type: "list",
+			objectType: "ProductStoreAvailability",
+		}
+	},
+	primaryKey: "_id",
+	
+};
+
+const ProductStoreAvailabilitySchema = {
+	name: "ProductStoreAvailability",
+	embedded: true,
+	properties: {
+		productID: "int",
+		menuItemName: "string",
+		status: "string",
+	}
+};
+
+//exports.ProjectSchema = ProjectSchema;
+//exports.TaskSchema = TaskSchema;
+//exports.UserSchema = UserSchema;
 exports.MenuItemSchema = MenuItemSchema;
 exports.CartSchema = CartSchema;
+exports.StoreSchema = StoreSchema;
+exports.ProductStoreAvailabilitySchema = ProductStoreAvailabilitySchema;

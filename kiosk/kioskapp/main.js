@@ -46,6 +46,7 @@ async function mainMenu() {
       }
 		case Choices.WatchCatalogChanges : {
 			await watch.watchForChanges();
+			await watch.watchForStoreAvailChanges();
 			output.result("Change notifications on.");
 			return mainMenu();
 		}
