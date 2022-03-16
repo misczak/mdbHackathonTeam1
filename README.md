@@ -27,12 +27,10 @@ _Describe what you application does and how it works_
 
 Andrew Chaffin - 
 Jay Runkel - 
-John Misczak -
+John Misczak - GlobalHQApp front end and Realm function logic 
 Kamron Abtahi - 
 Rory Pruvot -
 Samadnya Kalaskar - 
-
-
 
 # Demonstration Script
 
