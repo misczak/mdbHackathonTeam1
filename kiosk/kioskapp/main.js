@@ -12,15 +12,19 @@ const Choices = {
   LogOut: "Log out / Quit",
 };
 */
+var ui;
 
 const Choices = {
   Checkout: "Review Shopping Cart/Checkout",
-  SelectItem: "Select An Item",
+  SelectItem: "Add Item To Cart",
 	WatchCatalogChanges: "Turn On Catalog Change Noficiations",
   LogOut: "Log out / Quit",
 };
 
 async function mainMenu() {
+	ui = ui == undefined ? new inquirer.ui.BottomBar() : ui;
+
+	ui.log.write("Main Menu");
 	
   try {
     const answers = await inquirer.prompt({
@@ -35,12 +39,14 @@ async function mainMenu() {
         await shoppingCart.checkOut();
         return mainMenu();
       }
-      case Choices.SelectItem: {
+    case Choices.SelectItem: {
+				ui.updateBottomBar("Shopping");
         await shoppingCart.selectCategory();
 				return mainMenu();
       }
 		case Choices.WatchCatalogChanges : {
 			await watch.watchForChanges();
+			output.result("Change notifications on.");
 			return mainMenu();
 		}
       case Choices.LogOut: {
@@ -62,3 +68,4 @@ async function mainMenu() {
 
 
 exports.mainMenu = mainMenu;
+exports.ui = ui;

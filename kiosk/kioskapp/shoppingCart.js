@@ -23,7 +23,7 @@ getCategories = async () => {
 					categorySet.add(curItem.category);
 					return categorySet;
 				});
-			output.result(catResult);
+			//output.result(catResult);
 
 			categories = Array.from(catResult);
 		} catch (err) {
@@ -91,7 +91,11 @@ printCart = async () => {
 
 
 	output.header("Shopping cart contents: ");
-	items.forEach(item => output.result(item.menuItemName));
+	//items.forEach(item => output.result(item.menuItemName));
+	output.table(items.map((item) => {
+		const row = {name: item.menuItemName, category: item.category, sku: item.productID};
+		return row;
+	}));
 }
 
 printCartSummary = async () => {
