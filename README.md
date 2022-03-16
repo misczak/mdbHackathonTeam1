@@ -15,12 +15,12 @@ Bodega Buddy is a real-time inventory management system that allows kiosks to sy
 
 _Please explain why you decided to build the application/demonstration for this project. What inspired you? What problems does it solve or how will it make Presales activities easier?_
 
-The demo created during this hackathon very closely emulates a current engagement one of our SAs has with a very large nationwide bodega or convenance store chain. It shows how MDB quickly and easily solves the challenges that many of these brick and mortar companies face when it comes to large distribution centers and real time availability from there to their stores and customer’s shopping carts.
+The demo created during this hackathon very closely emulates a current engagement one of our SAs has with a very large nationwide bodega or convenience store chain. It shows how MDB quickly and easily solves the challenges that many of these brick and mortar companies face when it comes to large distribution centers and real time availability from there to their stores and customer’s shopping carts.
 It has been developed and designed in a way which can be easily reusable for other demos in the future with clear set up and configuration instructions.
 
 _What MongoDB competitive differentiators (developer productivity, resiliency, scalability, etc.) does this demonstration showcase?_
 
-Not only was Bodega Buddys designed and developed in a rapid pace within the 50 hour hackathon window, but it clearly shows many of MDBs latest technologies that enhance its core capabilities. With Realm sync, real time updates are reflected within the Realm database installed on the self-service kiosk at the current store. Additionally, Atlas Search allows for fuzzy, autocomplete full text search within the Global HQ app to quickly find items to mark as out-of-stock or in-stock. Furthermore, Atlas Search was used to find stores close to a zip code specified by the GlobalHQApp user, so that they don’t have to memorize every store ID they are responsible for. The GlobalHQ App was built to operate entirely on MongoDB Realm App Services. The frontend is hosted as two static files, and all of the backend logic uses Realm Web SDK and Realm Functions. There is no application server involved to run this demo.
+Not only was Bodega Buddy designed and developed in a rapid pace within the 50 hour hackathon window, but it clearly shows many of MDBs latest technologies that enhance its core capabilities. With Realm sync, real time updates are reflected within the Realm database installed on the self-service kiosk at the current store. Additionally, Atlas Search allows for fuzzy, autocomplete full text search within the Global HQ app to quickly find items to mark as out-of-stock or in-stock. Furthermore, Atlas Search Geo was used to find stores close to a zip code specified by the GlobalHQ app user, so that they don’t have to memorize every store ID they are responsible for. The GlobalHQ App was built to operate entirely on MongoDB Realm App Services. The frontend is hosted as two static files, and all of the backend logic uses Realm Web SDK and Realm Functions. There is no application server involved to run this demo.
 
 
 # Detailed Application Overview
@@ -38,7 +38,7 @@ _Describe what you application does and how it works_
 * Jay Runkel - Kiosk Application, Realm NodeJS application and Realm sync
 * John Misczak - GlobalHQApp front end and Realm function logic
 * Kamron Abtahi - Catalog Data generation, Data cleaning, Testing
-* Rory Pruvot - Atlas Search Indexes and Geo Queries, Store Catalog Data Ingestion
+* Rory Pruvot - Atlas Search Indexes and Geo Queries, Store Catalog Data Generation
 * Samadnya Kalaskar -  Atlas Cluster management, Catalog Data modeling, Store Catalog Data cleaning
 
 # Demonstration Script
